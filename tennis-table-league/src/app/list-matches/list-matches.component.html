@@ -1,0 +1,35 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>All Matches</h2>
+
+    
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Round no</th>
+            <th>Team Name</th>
+            <th>First Player</th>
+            <th>First Player Point</th>
+            <th>Second_Player</th>
+            <th>Second Player Point</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let listPlayers of listOfPlayer | async">
+            <td>{{listPlayers.matchId}}</td>
+            <td>{{listPlayers.teamName}}</td>
+            <td>{{listPlayers.firstPlayer}}</td>
+            <td>{{listPlayers.firstPlayerPoint}}</td>
+            <td>{{listPlayers.secondPlayer}}</td>
+            <td>{{listPlayers.secondPlayerPoint}}</td>
+          <td>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,37 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>List Of Players</h2>
+
+    <!--<div class="input-group">
+  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+    aria-describedby="search-addon"/>
+
+  <button type="button" (click)="searchParticipants($event.target.value)" class="btn btn-outline-primary">Search By Team Name</button>
+</div>-->
+
+
+
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Participants Number</th>
+            <th>Participants Name</th>
+            <th>Team Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let listParticipants of listOfParticipants | async">
+            <td>{{listParticipants.participantsId}}</td>
+            <td>{{listParticipants.participantsName}}</td>
+            <td>{{listParticipants.teamName}}</td>
+            <td><button (click)="deleteParticipants(listParticipants.participantsId)" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  

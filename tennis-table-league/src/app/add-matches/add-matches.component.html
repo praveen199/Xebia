@@ -1,0 +1,45 @@
+
+<div [hidden]="submitted" style="width: 400px;">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Round no</label>
+        <input type="text" class="form-control" id="matchId" required [(ngModel)]="matches.matchId" name="matchId">
+      </div>
+      
+      <div class="form-group">
+        <label for="name">Team Name</label>
+        <input type="text" class="form-control" id="teamName" required [(ngModel)]="matches.teamName" name="teamName">
+      </div>
+  
+      <div class="form-group">
+        <label for="name">First Player</label>
+        <input type="text" class="form-control" id="firstPlayer" required [(ngModel)]="matches.firstPlayer" name="firstPlayer">
+      </div>
+  
+      <div class="form-group">
+        <label for="name">First Player Point</label>
+        <input type="text" class="form-control" id="firstPlayerPoint" required [(ngModel)]="matches.firstPlayerPoint" name="firstPlayerPoint">
+      </div>
+  
+      <div class="form-group">
+        <label for="name">Second Player</label>
+        <input type="text" class="form-control" id="secondPlayer" required [(ngModel)]="matches.secondPlayer" name="secondPlayer">
+      </div>
+  
+      <div class="form-group">
+        <label for="name">Second Player Point</label>
+        <input type="text" class="form-control" id="secondPlayerPoint" required [(ngModel)]="matches.secondPlayerPoint" name="secondPlayerPoint">
+      </div>
+  
+      <button type="submit" class="btn btn-success">Submit</button>
+  
+      
+    </form>
+  </div>
+  
+  
+  <div [hidden]="!submitted">
+    <h4>Match added successfully!</h4>
+    <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+  </div>
+  
