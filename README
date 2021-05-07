@@ -1,0 +1,86 @@
+
+* Technology Used : JAVA 1.8,Spring boot,Spring Data,Angular 6+
+  Data Base Used :  MySql
+  Tools			 :  Spring Tool Suite,maven,Visual Studio
+
+* NOTE : This application contains SQL file also.
+ 
+* Step to run java application :
+	
+  Step 1 : Need to create a procedure in database 
+  
+  			DELIMITER $$  
+			DROP PROCEDURE IF EXISTS winner_round;
+			CREATE PROCEDURE winner_round (IN match_no INT, IN team_name VARCHAR(45),OUT highestPoint INT)
+			BEGIN
+			    DECLARE PLAYER_ONE INT;
+				 DECLARE PLAYER_TWO INT;
+			     
+			    SET PLAYER_ONE = (SELECT First_Player_Point FROM MATCHES WHERE Round_no = match_no AND Team_Name=team_name);
+			    SET PLAYER_TWO = (SELECT Second_Player_Point FROM MATCHES WHERE Round_no = match_no AND Team_Name=team_name);
+				
+			    SELECT (SELECT First_Player_Point FROM MATCHES WHERE Round_no = match_no AND Team_Name=team_name);
+			    SELECT PLAYER_TWO;
+			  
+			    IF(PLAYER_ONE > PLAYER_TWO) THEN 
+			    	SET highestPoint = PLAYER_ONE;
+			    ELSE 
+			    	SET highestPoint = PLAYER_TWO;
+			    	END IF;
+			END
+	
+  Step 2 : This is maven project,so import TennisTableLeague into spring tool suite as maven project
+  		
+  Step 3 : When you are running this application first time then you need to enable below property(application.properties)
+  			
+  		   spring.datasource.initialization-mode=always	
+  		   
+  		   If you running second time this application so please disable it.
+  		   
+  		   
+  Step 4 : Start application as spring boot project
+	
+
+  NOTE : Below are the url which we have used to test this application
+	
+	   Participants	
+	   *****************
+		
+		GET : localhost:8081/participants/list/all
+		POST : localhost:8081/participants/add/request
+			{
+		        "participantsId": 113,
+		        "participantsName": "player3",
+		        "teamName": "A"
+		    }
+			
+		DELETE : localhost:8081/participants/remove/113
+		GET : localhost:8081/participants/search/teamname/B
+		
+		Match :
+		*****************
+		 
+		GET : localhost:8081/match/list/all
+		POST : localhost:8081/match/add/match
+		
+		{
+		        "matchId": 1004,
+		        "teamName": "B",
+		        "firstPlayer": "player1",
+		        "firstPlayerPoint": 11,
+		        "secondPlayer": "player3",
+		        "secondPlayerPoint": 12
+		    }
+		PUT : localhost:8081/match/update/winner/1001
+		
+		GET : localhost:8081/match/find/winner/1001/A
+		
+		GET : localhost:8081/match/check/status/for/round/1002
+		
+* Step to run angular application :		
+	
+	Step 1  : import tennis-table-league in visual studio.
+	
+	Step 2 :  Go to application path and enter below command to run the application.
+	
+			  >ng serve
